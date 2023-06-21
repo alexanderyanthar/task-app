@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './App.css';
+import TaskForm from './components/TaskForm';
+import TaskItem from './components/TaskItem';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -33,16 +35,11 @@ const App = () => {
 
   return (
     <div className='App'>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder='Enter Task' value={taskInput} onChange={handleInputChange}/>
-      </form>
+      <TaskForm handleSubmit={handleSubmit} taskInput={taskInput} handleInputChange={handleInputChange} />
       <ul>
         {tasks.map((task) => {
           return (
-            <li key={task.id}>
-              <input type="checkbox" onChange={(() => {handleCheckBox(task.id)})}/>
-              {task.title}
-            </li>
+            <TaskItem key={task.id} task={task} handleCheckBox={handleCheckBox} />
           )
         })}
       </ul>
