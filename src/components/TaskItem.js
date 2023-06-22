@@ -5,6 +5,8 @@ const TaskItem = ({ task, handleCheckBox }) => {
     <li key={task.id}>
         <input type="checkbox" onChange={(() => {handleCheckBox(task.id)})}/>
         {task.title}
+        {task.date}
+
     </li>
   )
 }
